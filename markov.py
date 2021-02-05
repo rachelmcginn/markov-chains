@@ -11,8 +11,9 @@ def open_and_read_file(file_path):
     """
 
     # your code goes here
+    contents = open(file_path).read()
 
-    return 'Contents of your file as one long string'
+    return contents
 
 
 def make_chains(text_string):
@@ -42,9 +43,20 @@ def make_chains(text_string):
 
     chains = {}
 
-    # your code goes here
+    words = text_string.split()
+     
+    dict_of_words = {}
 
-    return chains
+    for word in range(len(words) - 1):
+        # if words[word] == words[-1]:
+        #     break
+        word_key = tuple([words[word], words[word + 1]])
+        word_value =  words[word + 2]
+        
+        dict_of_words[word_key] = word_value
+
+    return print(dict_of_words)
+    #chains
 
 
 def make_text(chains):
