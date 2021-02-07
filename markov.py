@@ -23,6 +23,7 @@ def make_chains(text_string):
     and the value would be a list of the word(s) that follow those two
     words in the input text.
 
+
     For example:
 
         >>> chains = make_chains('hi there mary hi there juanita')
@@ -41,30 +42,47 @@ def make_chains(text_string):
         [None]
     """
 
-    chains = {}
-
     words = text_string.split()
-     
+  
     dict_of_words = {}
+    word_value = []
 
-    for word in range(len(words) - 1):
-        # if words[word] == words[-1]:
-        #     break
-        word_key = tuple([words[word], words[word + 1]])
-        word_value =  words[word + 2]
-        
-        dict_of_words[word_key] = word_value
+ 
+    for indx in range(len(words) - 2):
+       
+        word_key = tuple([words[indx], words[indx + 1]])
+    
+        if word_key in dict_of_words:
+            dict_of_words[word_key].append(words[indx + 2])  
+        else:
+            dict_of_words[word_key] = [words[indx + 2]]
 
-    return print(dict_of_words)
-    #chains
+
+        print("{key} {list} \n".format(key=word_key, list=dict_of_words[word_key]))
+
+    chains = dict_of_words
+    return chains
 
 
 def make_text(chains):
     """Return text from chains."""
 
+
+
+    # put links in words list 
     words = []
 
-    # your code goes here
+    for key, value in chains.items():
+        #add key to words
+        #add random word from value to the list as well
+
+
+
+    new_dict = {}
+
+    #new_dict[words[indx + 1]]
+
+    
 
     return ' '.join(words)
 
